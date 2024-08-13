@@ -49,16 +49,27 @@ These packages are usually pre-installed with TeX Live or MiKTeX. If not, they c
 
 ## Project Structure
 your-project/
+
 ├── README.md             # Project documentation
+
 ├── LICENSE               # License file
+
 ├── src/                  # Source files for the package
+
 │   ├── yourpackage.sty   # Custom package style file
+
 │   └── ...
+
 ├── examples/             # Example LaTeX files demonstrating package usage
+
 │   ├── example1.tex
+
 │   ├── example2.tex
+
 │   └── ...
+
 └── Introdution.pdf       # Documented source code
+
 
 ## License
 
