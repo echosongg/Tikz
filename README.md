@@ -1,92 +1,80 @@
-# Tikz package
+# <aiplans>: A TikZ-Based Library for Drawing POCL Plans
 
-This project focuses on the development of a specialized library designed to meet the needs of scientists and students who require high-quality graphical representations in their work. Built on the robust TikZ framework, this library aims to simplify the process of creating complex, precise diagrams that are essential for academic and scientific communication.
+<aiplans> is a specialized LaTeX package designed to assist scientists, students, and professionals in creating high-quality graphical representations, particularly Partial Order Causal Link (POCL) plans. Built on the robust TikZ framework, this library simplifies the process of generating complex, precise diagrams that are essential for academic and scientific communication. Our package is especially useful in fields such as artificial intelligence and automated planned, where visualizing causal relationships and dependencies is fundamental.
 
 ## Content
 
-- [Installation](#)
-- [System Requirements](#)
-- [Project Structure](#)
-- [License](#)
-- [Contact Information](#)
-
-## Installation
-### Prerequisites
-Before you begin, ensure you have met the following requirements:
-
-- You have installed Git.
-- You have installed TeX Live or MiKTeX.
-- You have access to a command-line interface on your system.
-- Cloning the Repository
-### Cloning the Repository
-To install the project, follow these steps:
-
-- Open your command-line interface and run the following command to clone the project repository:
-        git clone https://github.com/your-username/your-project.git
-- Navigate to the project directory:
-        Change to the project’s root directory:
-        cd your-project
-
-## System Requirements
-To successfully use this CTAN package, please ensure your system meets the following requirements:
-
-- Operating System:
-
-Compatible with all major operating systems, including Windows, macOS, and Linux distributions.
-TeX Distribution:
-
-TeX Live 2020 or later (recommended) - available on all supported platforms.
-MiKTeX 2.9 or later (for Windows users) - also supports automatic package installation.
-Required LaTeX Packages:
-
-- The package relies on several LaTeX packages which are typically included in standard TeX distributions:
-pgf
-tikz
-xcolor
-graphicx
-
-These packages are usually pre-installed with TeX Live or MiKTeX. If not, they can be easily installed via the TeX package manager (tlmgr for TeX Live, mpm for MiKTeX).
+- [Project Structure](#project-structure)
+- [License](#license)
+- [Future Improvements Plan](#future-improvements-plan)
+- [Contact Information](#contact-information)
+- [Team Members](#team-members)
 
 ## Project Structure
-your-project/
 
-├── README.md             # Project documentation
+Aiplans/
 
-├── LICENSE               # License file
+├── **README.md**
 
-├── src/                  # Source files for the package
+├── **README.pdf**
 
-│   ├── yourpackage.sty   # Custom package style file
+├── **Aiplans-Introdution-source-code.zip**
 
-│   └── ...
+├── **Aiplans-Introdution.pdf**
 
-├── examples/             # Example LaTeX files demonstrating package usage
+├── **tikzlibraryaiplans.code.tex**
 
-│   ├── example1.tex
+└── **License.txt**
 
-│   ├── example2.tex
 
-│   └── ...
+### Explanation
 
-└── Introdution.pdf       # Documented source code
+- **README**: This file provides an overview of the project, including installation instructions, system requirements, and other essential information.
+- **Aiplans-Introdution-source-code.zip**: Introduction file Latex source code.
+- **Aiplans-Introdution.pdf**: Detailed instructions on how to use the TikZ library included in this package. It covers the steps needed to generate diagrams using LaTeX.
+- **tikzlibraryaiplans.code.tex**: The core of the project, this file contains the TikZ library specifically designed for generating AI plan diagrams. This package is crucial for the functionality provided by this project.
+- **License.txt**: The license file outlines the terms under which the package can be used, modified, and distributed.
 
 
 ## License
 
+This material is subject to the [LaTeX Project Public License 1.3c](https://ctan.org/license/lppl1.3).
 
-### Installing Dependencies
-- Install necessary dependencies:
+## Future Improvements Plan
 
-If your project requires any additional LaTeX packages, you can install them via the TeX package manager. For example, with TeX Live, use the following command:
+As we continue to improve and expand the `<aiplans>` package, the following developments are planned for the upcoming future:
 
-tlmgr install package-name
+### In Scope
+
+1. **Extension Features for v1.0**:
+   - **Vertical Diagram Support**: We aim to enhance the package by introducing the ability to create vertical diagrams, which will provide more flexibility in visualizing POCL plans.
+   - **Dynamic Precondition/Effect Lengths**: After the package update, the lengths of the lines will be automatically adjusted based on the actual length of the text labels. In other words, if the label's text content is longer, the corresponding line will also be lengthened; if the label's text content is shorter, the line will be shortened accordingly. This dynamic adjustment allows the diagram to more flexibly adapt to various content requirements, resulting in a final diagram that is more visually appealing and clear.
+
+2. **Code Translator**:
+   - **PDDL/HDDL Code Translation**: We are developing a code translator that can accurately convert PDDL (Planning Domain Definition Language) and HDDL (Hierarchical Domain Definition Language) code into the schema format used by our `<aiplans>` library. This feature will streamline the process of diagram creation from existing codebases or at least allow to specify the tikz code in another syntax that might be more familiar to some.
 
 ## Contact Information
+
 If you have any questions, feedback, or suggestions regarding this project, please feel free to reach out to us. We are always happy to assist and appreciate your input.
 
-Email: your-email@example.com
-GitHub Issues: https://gitlab.cecs.anu.edu.au/u7166251/coding-ai-plans-in-latex-s2/-/issues
+**Email:** [u7166251@anu.edu.au](mailto:u7166251@anu.edu.au) (Yikai Ge)  
 For reporting bugs or requesting features.
-CTAN Repository: https://ctan.org/pkg/your-package (we haven't uploaded my package)
-Visit our package page on CTAN for the latest updates and documentation.
+
 We strive to respond to all inquiries as quickly as possible.
+
+## Team Members
+
+This project is developed by a team of students from the Australian National University (ANU), guided by our client. He provided us with the initial idea and relevant references, playing a crucial role in shaping the direction of our research.
+
+### Client
+- **Pascal Bercher**
+
+### Maintainers
+- **Yikai Ge**
+- **Chen Wang**
+- **Cheng Zhou**
+- **Lujia Li**
+- **Yinyin Chen**
+- **Xinni Song**
+
+We have worked closely with our client to ensure that the project meets their requirements and delivers high-quality results.
