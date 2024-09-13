@@ -1,0 +1,121 @@
+\ProvidesPackage{aiplan}
+\RequirePackage{tikz}
+\RequirePackage{listofitems}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathreplacing, decorations.markings}
+
+
+\tikzset{
+    action/.style n args={8}{
+        draw,
+        minimum width=3cm,
+        fill=blue,
+        rounded corners,
+        minimum height={max(#1,#2)*\baseHeight cm + 0.5*\baseHeight cm},
+        label={center:#7},
+        append after command={
+            \pgfextra{
+                % Define the node name
+                \edef\nodename{\tikzlastnode}
+                \ifx#3\empty % Check if label list is empty
+                \else % Process only if not empty
+                    % Read the label content
+                    \setsepchar{,}
+                    \readlist\nameparts{\nodename}
+                    \setsepchar{,}
+                    
+                    \ifnum#8=0\relax
+                    % Define positions for preconditions and effects relative to the node with shifts
+                        \ifnum#1>0
+                        \readlist\labellist{#3}
+                        \foreach \i in {1,...,#1} {
+                            % Precondition coordinates and lines
+                            \coordinate (\nodename-pre-\i) at ([xshift=-#5cm, yshift=(-\i + (#1)/2+0.25) * \baseHeight cm] \nodename.west);
+                            \draw (\nodename.west |- \nodename-pre-\i) -- +(-#5,0) node [midway, above, sloped, font=\scriptsize] {\labellist[\i]};
+                        }
+                        \fi;
+                        \readlist\labellist{#4}
+                        \ifnum#2>0
+                        \foreach \j in {1,...,#2} {
+                            % Effect coordinates and lines
+                            \coordinate (\nodename-eff-\j) at ([xshift=#6cm, yshift=(-\j + (#2)/2+0.25) * \baseHeight cm] \nodename.east);
+                            \draw (\nodename.east |- \nodename-eff-\j) -- +(#6,0) node [midway, above, sloped, font=\scriptsize] {\labellist[\j]};
+                        }
+                        \fi;
+                    \else
+                        \ifnum#1>0
+                        \readlist\labellist{#3}
+                        \foreach \i in {1,...,#1} {
+                            % Precondition coordinates and lines
+                            \coordinate (\nodename-pre-\i) at ([xshift=-#5 cm, yshift=(-\i + (#1)/2+0.25) * \baseHeight cm] \nodename.west);
+                            \draw (\nodename.west |- \nodename-pre-\i) -- +(-#5,0) node [midway, anchor=east, xshift=-0.5 cm, sloped, font=\scriptsize]{\labellist[\i]};
+                        }
+                        \fi;
+                        \readlist\labellist{#4}
+                        \ifnum#2>0
+                        \foreach \j in {1,...,#2} {
+                            % Effect coordinates and lines
+                            \coordinate (\nodename-eff-\j) at ([xshift=#6 cm, yshift=(-\j + (#2)/2+0.25) * \baseHeight cm] \nodename.east);
+                            \draw (\nodename.east |- \nodename-eff-\j) -- +(#6,0) node [midway,anchor=west, xshift=0.5 cm, font=\scriptsize] {\labellist[\j]};
+                        }
+                        \fi;
+                    \fi;
+                \fi;
+            }
+        },
+        label content/.initial={#3}
+    }
+}
+
+
+% Common base style for nodes
+\tikzset{
+    % COMMENT MISSING
+    base/.style n args={5}{
+        draw,
+        minimum width=0.05cm,
+        fill=black,
+        minimum height={#1*\baseHeight cm},
+        append after command={
+            \pgfextra{
+                \edef\nodename{\tikzlastnode}
+                \setsepchar{,}
+                \readlist\labellist{#2}
+                \foreach \i in {1,...,#1} {
+                    \coordinate (\nodename-#5-\i) at ([xshift=#3 cm, yshift=(-\i + (#1)/2+0.25) * \baseHeight cm] \nodename.#4);
+                    \draw (\nodename.#4 |- \nodename-#5-\i) -- +(#3,0)
+                        node [midway, above, sloped, font=\scriptsize] {\labellist[\i]};
+                }
+            }
+        }
+    }
+}
+
+\tikzset{
+    % Init style
+    init/.style n args={3}{
+        base={#1}{#2}{#3}{east}{eff}
+    }
+}
+
+\tikzset{
+    % Goal style
+    goal/.style n args={3}{
+        base={#1}{#2}{-#3}{west}{pre}
+    }
+}
+
+
+
+\tikzset{
+  dot/.style={
+        circle,fill,inner sep=0.1em  
+    }
+}
+
+\tikzset{
+    causallink/.style={
+        ->, shorten <= 0.2cm, shorten >= 0.1cm
+    }
+}
+
